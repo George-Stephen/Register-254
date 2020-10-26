@@ -21,6 +21,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'e_!y9l+(l)s8a)1mdkb=f$km3r!fokimxix0v2lrj1&c510sgk'
 
@@ -51,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'register.urls'
@@ -78,12 +87,8 @@ WSGI_APPLICATION = 'register.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': 'new_members',
-           'USER': 'stevie-yazz',
-           'PASSWORD': 'stephen2020',
-    }
+    'default': dj_database_url.config(
+        default= config('DATABASE_URL'))
 }
 
 
@@ -111,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 

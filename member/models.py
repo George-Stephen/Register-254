@@ -3,8 +3,8 @@ from django.db import models
 class Member(models.Model):
     id_number = models.CharField(max_length=20)
     full_name = models.CharField(max_length=255)
-    age = models.CharField(max_length=255)
-    email_address = models.EmailField()
+    gender = models.CharField(max_length=255)
+    date_birth = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=10)
     county = models.CharField(max_length=255)
     sub_county = models.CharField(max_length=255)
