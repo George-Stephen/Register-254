@@ -22,7 +22,7 @@ class Search_member(generics.ListAPIView):
     queryset = Member.objects.all()
     serializer_class = MemberSerializers
     filter_backends = [filters.SearchFilter]
-    search_fields = ["full_name","id_number"]
+    search_fields = ["member_number"]
 
 class Order_List(APIView):
     def get(self,request,format=None):
